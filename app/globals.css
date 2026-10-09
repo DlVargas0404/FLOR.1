@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  @apply bg-cream font-sans text-ink antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+  .btn {
+    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-extrabold uppercase tracking-wide transition active:scale-95 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn bg-brand text-white shadow-pop hover:bg-brand-dark;
+  }
+  .btn-gold {
+    @apply btn bg-gold text-ink hover:bg-gold-dark;
+  }
+  .btn-wa {
+    @apply btn bg-wa text-white hover:bg-wa-dark;
+  }
+  .btn-outline {
+    @apply btn border-2 border-white/80 text-white hover:bg-white hover:text-brand;
+  }
+  .btn-ghost {
+    @apply btn bg-black/5 text-ink hover:bg-black/10;
+  }
+  .btn-danger {
+    @apply btn bg-red-100 text-red-700 hover:bg-red-200;
+  }
+  .input {
+    @apply w-full rounded-xl border border-black/15 bg-white px-3.5 py-2.5 text-base text-ink placeholder:text-black/40 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30 sm:text-sm;
+  }
+  .label {
+    @apply mb-1 block text-sm font-semibold text-ink;
+  }
+  .section-title {
+    @apply font-display text-4xl uppercase leading-none tracking-wide sm:text-5xl;
+  }
+  .skeleton {
+    @apply relative overflow-hidden rounded-xl bg-black/10;
+  }
+  .skeleton::after {
+    content: '';
+    @apply absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/50 to-transparent;
+    animation: shimmer 1.4s infinite;
+  }
+}
+
+:focus-visible {
+  outline: 3px solid #ffc400;
+  outline-offset: 2px;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
