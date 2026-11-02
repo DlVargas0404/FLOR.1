@@ -1,43 +1,247 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="Stylesheet" href="style.css">
-    <title>Flower</title>
-</head>
-<body>
+<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head><body>
+<title>Invitación a Shrek</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Bricolage+Grotesque:wght@400;600;800&family=DM+Mono:wght@500&display=swap">
+<style>
+/* Concept: night swamp painted on canvas; a paper cinema ticket floats above it, then a paint palette turns the date into colours. */
+:root{
+  --night:#0b1f1a; --moss:#2f6b3a; --ogre:#9bd44a; --paper:#f6ecd2; --ink:#1b2a1f;
+  --ticket-shadow:#0008;
+  --display:"Bagel Fat One","Arial Rounded MT Bold",system-ui,sans-serif;
+  --body:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --mono:"DM Mono",ui-monospace,Menlo,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--night);color:var(--paper);font-family:var(--body);
+  padding-block:28px 56px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  overflow-x:hidden}
+#bg{position:fixed;inset:0;width:100%;height:100%;z-index:0}
+main{position:relative;z-index:1;max-width:460px;margin-inline:auto;display:flex;flex-direction:column;align-items:center;gap:56px}
 
-<div class="flower">
-    <div class="text-above">POR SI NO TE</div>
-    <div class="mid">
-    </div>
-    <div class="Petal1 p1">
-    </div>
-    <div class="Petal1 p2">
-    </div>
-    <div class="Petal1 p3">
-    </div>
-    <div class="Petal1 p4">
-    </div>
-    <div class="Petal2 p1">
-    </div>
-    <div class="Petal2 p2">
-    </div>
-    <div class="Petal2 p3">
-    </div>
-    <div class="Petal2 p4">
-    </div>
-    <div class="Petal3 p1">
-    </div>
-    <div class="Petal3 p2">
-    </div>
-    <div class="Petal3 p3">
-    </div>
-    <div class="Petal3 p4">
-    </div>
-    <div class="text-below">DIERON TU FLOR </div>
+/* ---------- ticket ---------- */
+.stage{position:relative;perspective:900px;width:100%;padding-top:22px}
+.ticket{position:relative;width:100%;color:var(--ink);background:var(--paper);border-radius:14px;
+  filter:drop-shadow(0 24px 30px var(--ticket-shadow));
+  -webkit-mask:radial-gradient(circle 14px at 0 64%,#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 14px at 100% 64%,#0000 98%,#000) right/51% 100% no-repeat;
+          mask:radial-gradient(circle 14px at 0 64%,#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 14px at 100% 64%,#0000 98%,#000) right/51% 100% no-repeat;
+  animation:drop 1.1s cubic-bezier(.2,1.3,.4,1) both,bob 6s 1.2s ease-in-out infinite;
+  transform-style:preserve-3d;transition:transform .15s}
+@keyframes drop{from{transform:translateY(-120px) rotate(-8deg);opacity:0}}
+@keyframes bob{50%{translate:0 -8px}}
+.top{padding:26px 24px 20px}
+.kicker{display:flex;justify-content:space-between;font:500 11px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;opacity:.7}
+h1{margin:14px 0 4px;font:400 clamp(72px,24vw,112px)/.85 var(--display);color:var(--moss);letter-spacing:-.01em;
+  text-shadow:3px 3px 0 var(--ogre);text-wrap:balance}
+h1 span{display:inline-block;animation:letter 2.6s ease-in-out infinite}
+h1 span:nth-child(2){animation-delay:.12s}h1 span:nth-child(3){animation-delay:.24s}h1 span:nth-child(4){animation-delay:.36s}h1 span:nth-child(5){animation-delay:.48s}
+@keyframes letter{0%,60%,100%{transform:translateY(0) rotate(0)}30%{transform:translateY(-10px) rotate(-4deg)}}
+.for{margin:0;font-size:18px;font-weight:600}
+.perf{border-top:3px dashed #1b2a1f55;margin:0 18px}
+.bottom{display:grid;grid-template-columns:1fr auto;gap:16px;padding:20px 24px 24px;align-items:end}
+.facts{display:grid;gap:12px;grid-template-columns:repeat(2,minmax(0,1fr))}
+.facts dt{font:500 10px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;opacity:.6;margin-bottom:5px}
+.facts dd{margin:0;font-weight:800;font-size:20px;font-variant-numeric:tabular-nums}
+.facts .wide{grid-column:1/-1}
+.bars{width:54px;height:96px;background:repeating-linear-gradient(90deg,var(--ink) 0 2px,#0000 2px 4px,var(--ink) 4px 5px,#0000 5px 8px,var(--ink) 8px 11px,#0000 11px 12px);transform-origin:center;writing-mode:vertical-rl}
+.stamp{position:absolute;z-index:2;right:14px;top:4px;rotate:8deg;background:var(--ogre);color:var(--ink);font:400 15px/1 var(--display);padding:9px 12px;border-radius:999px;animation:wig 2.4s ease-in-out infinite}
+@keyframes wig{50%{rotate:-6deg;scale:1.08}}
+
+/* ---------- palette ---------- */
+section{width:100%}
+h2{margin:0 0 6px;font:400 clamp(36px,11vw,50px)/1 var(--display);text-wrap:balance}
+h2 em{font-style:normal;background:linear-gradient(90deg,#ff5a4d,#ffa63d,#ffe14a,#5bd36e,#4aa8ff,#b676ff,#ff5a4d);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:flow 5s linear infinite}
+@keyframes flow{to{background-position:300% 0}}
+.sub{margin:0 0 22px;opacity:.8;max-width:34ch;line-height:1.45}
+.palette{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.swatch{appearance:none;border:0;cursor:pointer;aspect-ratio:1;border-radius:46% 54% 52% 48%/50% 45% 55% 50%;background:var(--c);
+  color:#0b1f1a;font:800 15px var(--body);display:grid;place-items:end center;padding-bottom:14%;
+  box-shadow:inset -8px -10px 0 #0003,0 10px 0 #0004;animation:blob 4s ease-in-out infinite;animation-delay:calc(var(--i)*-.7s);transition:transform .2s}
+.swatch:hover,.swatch:focus-visible{transform:scale(1.1) rotate(-4deg);outline:3px solid var(--paper);outline-offset:3px}
+@keyframes blob{50%{border-radius:54% 46% 45% 55%/45% 55% 45% 55%;translate:0 -6px}}
+.hint{margin:16px 0 0;font:500 12px var(--mono);letter-spacing:.12em;text-transform:uppercase;opacity:.65}
+
+/* ---------- rsvp ---------- */
+.rsvp{text-align:center;display:flex;flex-direction:column;align-items:center;gap:18px}
+.rsvp h2{margin:0}
+.btns{display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap;min-height:70px}
+.btn{font:800 18px var(--body);border:0;border-radius:16px;padding:15px 24px;cursor:pointer;transition:transform .2s,opacity .2s}
+.yes{background:var(--ogre);color:var(--ink);box-shadow:0 6px 0 #5f8f24;font-size:calc(18px*var(--grow,1));animation:beat 1.6s ease-in-out infinite}
+@keyframes beat{50%{translate:0 -3px}}
+.yes:active{translate:0 4px;box-shadow:0 2px 0 #5f8f24}
+.no{background:#ffffff1c;color:var(--paper);font-size:calc(16px*var(--shrink,1));padding:calc(13px*var(--shrink,1)) calc(20px*var(--shrink,1))}
+.btn:focus-visible{outline:3px solid var(--paper);outline-offset:3px}
+.done{max-width:30ch;line-height:1.5;font-size:18px;animation:drop .9s cubic-bezier(.2,1.3,.4,1) both}
+.done b{font:400 28px var(--display);display:block;color:var(--ogre);margin-bottom:6px}
+
+/* ---------- splash overlay ---------- */
+.splash{--x:50%;--y:50%;position:fixed;inset:0;z-index:20;display:grid;place-items:center;text-align:center;padding:24px;background:var(--c);color:#12201a;
+  clip-path:circle(0 at var(--x) var(--y));transition:clip-path .7s cubic-bezier(.6,0,.2,1);pointer-events:none}
+.splash.on{clip-path:circle(150% at var(--x) var(--y));pointer-events:auto}
+.splash .name{font:500 13px var(--mono);letter-spacing:.25em;text-transform:uppercase;margin-bottom:14px}
+.splash .msg{font:400 clamp(34px,10vw,52px)/1.05 var(--display);max-width:14ch;margin:0 auto 28px;text-wrap:balance}
+.sbtns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.splash .alt{background:transparent;color:#12201a;box-shadow:inset 0 0 0 2px #12201a}
+.splash .msg.pop{animation:drop .5s cubic-bezier(.2,1.3,.4,1) both}
+.splash button{background:#12201a;color:#f6ecd2;font:800 16px var(--body);border:0;border-radius:14px;padding:13px 22px;cursor:pointer}
+.splash button:focus-visible{outline:3px solid #12201a;outline-offset:3px}
+
+@media (max-width:400px){.bars{display:none}.bottom{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<canvas id="bg" aria-hidden="true"></canvas>
+
+<main>
+  <div class="stage">
+    <div class="stamp">¡Te toca!</div>
+    <article class="ticket" id="ticket" aria-label="Entrada para Shrek, 12:00 PM">
+      <div class="top">
+        <div class="kicker"><span>Cine · Función de día</span><span>Admit 2</span></div>
+        <h1 aria-label="Shrek"><span>S</span><span>H</span><span>R</span><span>E</span><span>K</span></h1>
+        <p class="for">Una entrada para ti<span id="who"></span>.</p>
+      </div>
+      <div class="perf"></div>
+      <div class="bottom">
+        <dl class="facts">
+          <div><dt>Hora</dt><dd>12:00 PM</dd></div>
+          <div><dt>Sala</dt><dd>El Pantano</dd></div>
+          <div class="wide" id="dateRow" hidden><dt>Fecha</dt><dd id="dateTxt"></dd></div>
+          <div class="wide"><dt>Después</dt><dd>Cita de colores</dd></div>
+        </dl>
+        <div class="bars" aria-hidden="true"></div>
+      </div>
+    </article>
   </div>
-</body>
-</html>
+
+  <section>
+    <h2>Y luego, una cita de <em>colores</em></h2>
+    <p class="sub">Cada color trae varias ideas para la tarde. Toca uno y cambia de idea hasta que alguna te guste.</p>
+    <div class="palette" id="palette"></div>
+    <p class="hint">6 colores · 30 ideas</p>
+  </section>
+
+  <section class="rsvp" id="rsvp">
+    <h2>¿Vamos?</h2>
+    <div class="btns" id="btns">
+      <button class="btn yes" id="yes">¡Sí, vamos!</button>
+      <button class="btn no" id="no">No</button>
+    </div>
+  </section>
+</main>
+
+<div class="splash" id="splash" role="dialog" aria-live="polite">
+  <div><div class="name" id="sName"></div><p class="msg" id="sMsg"></p><div class="sbtns"><button id="sNext">Otra idea ↻</button><button id="sClose" class="alt">Volver</button></div></div>
+</div>
+
+<script>
+// Personaliza: ?para=Nombre&fecha=Sábado 8 de noviembre
+const q = new URLSearchParams(location.search), $ = id => document.getElementById(id);
+if (q.get('para')) $('who').textContent = ', ' + q.get('para');
+if (q.get('fecha')) { $('dateTxt').textContent = q.get('fecha'); $('dateRow').hidden = false; }
+
+// ---- colour missions
+const colors = [
+  ['Rojo','#ff5a4d',['Un antojo dulce, elegido por ti.','Un helado compartido.','Una fresa o una cereza cada uno.','Un labial, una flor o algo rojo para el otro.','Una pizza con mucha salsa.']],
+  ['Naranja','#ffa63d',['Una foto tonta de los dos.','Un atardecer mirado en silencio.','Un jugo natural para brindar.','Una selfie con cara de ogro.','Un dulce de mandarina.']],
+  ['Amarillo','#ffe14a',['Algo que te haga reír hoy.','Un chiste malo por turnos.','Una flor amarilla.','Palomitas de maíz para los dos.','Contar el recuerdo más gracioso.']],
+  ['Verde','#5bd36e',['Un paseo, como por el pantano.','Una caminata por un parque.','Un té o una limonada verde.','Buscar la hoja más rara y guardarla.','Un picnic sobre el pasto.']],
+  ['Azul','#4aa8ff',['Una canción para el camino.','Mirar el cielo y buscar formas.','Un postre azul, sí existe.','Una playlist armada entre los dos.','Escribir un deseo y guardarlo.']],
+  ['Morado','#b676ff',['Un deseo para la próxima cita.','Un chocolate con mora o uva.','Dibujarnos el uno al otro.','Un secreto pequeño, a cambio de otro.','Elegir juntos la próxima película.']]
+];
+const pal = $('palette'), sp = $('splash');
+let cur = null;
+function show() {
+  $('sName').textContent = cur.n + ' · idea ' + (cur.k+1) + ' de ' + cur.ms.length;
+  const m = $('sMsg'); m.textContent = cur.ms[cur.k];
+  m.classList.remove('pop'); void m.offsetWidth; m.classList.add('pop');
+}
+colors.forEach(([n,c,ms],i) => {
+  const b = document.createElement('button');
+  b.className = 'swatch'; b.textContent = n; b.style.setProperty('--c', c); b.style.setProperty('--i', i);
+  b.addEventListener('click', e => {
+    const r = b.getBoundingClientRect();
+    sp.style.setProperty('--x', (r.left + r.width/2) + 'px'); sp.style.setProperty('--y', (r.top + r.height/2) + 'px');
+    sp.style.setProperty('--c', c); cur = {n, ms, k: Math.floor(Math.random()*ms.length)}; show();
+    sp.classList.add('on'); $('sClose').focus({preventScroll:true});
+  });
+  pal.appendChild(b);
+});
+$('sNext').addEventListener('click', () => { cur.k = (cur.k+1) % cur.ms.length; show(); });
+$('sClose').addEventListener('click', () => sp.classList.remove('on'));
+addEventListener('keydown', e => { if (e.key === 'Escape') sp.classList.remove('on'); });
+
+// ---- rsvp: "No" se encoge, "Sí" crece
+let tries = 0;
+$('no').addEventListener('click', () => {
+  tries++;
+  $('rsvp').style.setProperty('--grow', 1 + tries * .22);
+  $('rsvp').style.setProperty('--shrink', Math.max(0, 1 - tries * .22));
+  if (tries >= 4) $('no').hidden = true;
+});
+$('yes').addEventListener('click', e => {
+  $('btns').hidden = true;
+  const d = document.createElement('p'); d.className = 'done';
+  d.innerHTML = '<b>¡Trato hecho!</b>Nos vemos a las 12:00 PM en El Pantano. Después, a pintar la tarde de colores.';
+  $('rsvp').appendChild(d);
+  splat(e.clientX, e.clientY);
+});
+
+// ---- background: night swamp, hills, moon, fireflies, paint splats
+const cv = $('bg'), cx = cv.getContext('2d');
+const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+let W, H, dpr, flies = [], splats = [];
+function size() {
+  dpr = Math.min(devicePixelRatio || 1, 2); W = innerWidth; H = innerHeight;
+  cv.width = W*dpr; cv.height = H*dpr; cx.setTransform(dpr,0,0,dpr,0,0);
+  flies = Array.from({length: W < 600 ? 26 : 50}, () => ({x:Math.random()*W,y:H*.35+Math.random()*H*.65,p:Math.random()*6.3,s:.3+Math.random()*.6}));
+}
+addEventListener('resize', size); size();
+function hill(t, base, amp, sp, col, ph) {
+  cx.fillStyle = col; cx.beginPath(); cx.moveTo(0,H);
+  for (let x = 0; x <= W; x += 12) cx.lineTo(x, base + Math.sin(x*.006+ph+t*sp)*amp + Math.sin(x*.015+ph*2)*amp*.4);
+  cx.lineTo(W,H); cx.fill();
+}
+function splat(x, y) {
+  const cs = colors.map(c => c[1]);
+  for (let i = 0; i < 90; i++) { const a = Math.random()*6.3, v = 2 + Math.random()*9;
+    splats.push({x,y,vx:Math.cos(a)*v,vy:Math.sin(a)*v-3,r:3+Math.random()*7,c:cs[i%6],life:1}); }
+}
+function frame(ms) {
+  const t = ms/1000;
+  const g = cx.createLinearGradient(0,0,0,H); g.addColorStop(0,'#071612'); g.addColorStop(.6,'#12362b'); g.addColorStop(1,'#1d4a2d');
+  cx.fillStyle = g; cx.fillRect(0,0,W,H);
+  // moon
+  const mx = W*.78, my = H*.14, mr = Math.min(W,H)*.07;
+  const mg = cx.createRadialGradient(mx,my,mr*.6,mx,my,mr*3.2); mg.addColorStop(0,'#f6ecd255'); mg.addColorStop(1,'#f6ecd200');
+  cx.fillStyle = mg; cx.fillRect(mx-mr*4,my-mr*4,mr*8,mr*8);
+  cx.fillStyle = '#f6ecd2'; cx.beginPath(); cx.arc(mx,my,mr,0,6.3); cx.fill();
+  hill(t, H*.72, 26, .15, '#164129', 0);
+  hill(t, H*.82, 30, .22, '#0f3220', 2);
+  hill(t, H*.92, 22, .3, '#0a2216', 4);
+  // fireflies
+  for (const f of flies) {
+    f.x += Math.sin(t*f.s + f.p)*.4; f.y += Math.cos(t*f.s*1.3 + f.p)*.3;
+    const a = .35 + .65*Math.abs(Math.sin(t*f.s*2 + f.p));
+    cx.fillStyle = `rgba(214,255,110,${a})`; cx.shadowColor = '#d6ff6e'; cx.shadowBlur = 14;
+    cx.beginPath(); cx.arc(f.x,f.y,2.2,0,6.3); cx.fill();
+  }
+  cx.shadowBlur = 0;
+  // paint splats
+  splats.forEach(p => { p.vy += .25; p.x += p.vx; p.y += p.vy; p.life -= .008; cx.globalAlpha = Math.max(p.life,0); cx.fillStyle = p.c; cx.beginPath(); cx.arc(p.x,p.y,p.r,0,6.3); cx.fill(); });
+  cx.globalAlpha = 1; splats = splats.filter(p => p.life > 0);
+  if (!still) requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+if (still) addEventListener('resize', () => requestAnimationFrame(frame));
+
+// ---- ticket tilt
+const tk = $('ticket');
+if (!still) addEventListener('pointermove', e => {
+  const x = (e.clientX/innerWidth - .5), y = (e.clientY/innerHeight - .5);
+  tk.style.transform = `rotateY(${x*12}deg) rotateX(${-y*10}deg)`;
+});
+</script>
+</body></html>
