@@ -1,43 +1,48 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="Stylesheet" href="style.css">
-    <title>Flower</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Invitación a Shrek 🧅</title>
+<meta name="description" content="Te invito a ver Shrek a las 12:00 PM y luego a una cita de colores.">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<div class="sky"></div>
+<div class="fireflies" id="fireflies"></div>
 
-<div class="flower">
-    <div class="text-above">POR SI NO TE</div>
-    <div class="mid">
+<main>
+  <section class="card" id="card">
+    <div class="ogre">🧅</div>
+    <p class="small">✨ Tienes una invitación ✨</p>
+    <h1>¡Hola<span id="who"></span>!</h1>
+    <p class="lead">Te invito a ver</p>
+    <h2 class="title">SHREK</h2>
+
+    <div class="info">
+      <div class="chip"><span>🎬</span> Cine de pantano</div>
+      <div class="chip clock"><span>🕛</span> 12:00 PM</div>
+      <div class="chip" id="dateChip" hidden><span>📅</span> <b id="dateTxt"></b></div>
     </div>
-    <div class="Petal1 p1">
+
+    <p class="then">…y después, una</p>
+    <h3 class="rainbow">cita de colores</h3>
+    <div class="arc"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+
+    <p class="ask">¿Aceptas?</p>
+    <div class="buttons" id="buttons">
+      <button id="yes" class="btn yes">¡Sí, claro! 💚</button>
+      <button id="no" class="btn no">No 😢</button>
     </div>
-    <div class="Petal1 p2">
+
+    <div class="done" id="done" hidden>
+      <div class="big">🎉💚🌈</div>
+      <p>¡Perfecto! Nos vemos a las <b>12:00 PM</b>.<br>Lleva tu mejor sonrisa… y ganas de colores 🎨</p>
     </div>
-    <div class="Petal1 p3">
-    </div>
-    <div class="Petal1 p4">
-    </div>
-    <div class="Petal2 p1">
-    </div>
-    <div class="Petal2 p2">
-    </div>
-    <div class="Petal2 p3">
-    </div>
-    <div class="Petal2 p4">
-    </div>
-    <div class="Petal3 p1">
-    </div>
-    <div class="Petal3 p2">
-    </div>
-    <div class="Petal3 p3">
-    </div>
-    <div class="Petal3 p4">
-    </div>
-    <div class="text-below">DIERON TU FLOR </div>
-  </div>
+  </section>
+</main>
+
+<canvas id="confetti"></canvas>
+<script src="app.js"></script>
 </body>
 </html>
